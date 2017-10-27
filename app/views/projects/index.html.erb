@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+      <div class="col-md-6 panel panel-info" style="padding-left: 0; padding-right: 0">
+        <div class="panel-heading"><%= project.name %></div>
+        <div class="panel-body">
+          <%= project.description %>
+
+          <%= link_to 'Project details', project_path(project), class: 'btn btn-lg btn-info pull-right' %>
+        </div>
+        <div class="panel-footer">
+          <span class="text-left">Client: <%= project.client.full_name %></span>
+          <span class="pull-right"><%= project.due_date.strftime("Due date %m/%d/%Y") %></span>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+  <div class="row">
+    <%= will_paginate @projects %>
+  </div>
+</div>
