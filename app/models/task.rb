@@ -6,4 +6,6 @@ class Task < ApplicationRecord
   validates :due_date, presence: true
   validates :status, presence: true
   validates :project, presence: true
+
+  enum status: %i(in_process on_hold done archived)
 end

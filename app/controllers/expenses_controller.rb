@@ -22,6 +22,17 @@ class ExpensesController < ApplicationController
     @expense = Expense.find_by_id(params[:id])
   end
 
+  def update
+    expense = Expense.find_by_id(params[:id])
+    if expense.update_attributes(expense_params)
+      flash[:success] = 'Expense successfully updated'
+      redirect_to project_path(@project)
+    else
+      flash[:error] = "Something went wrong: #{expense.errors.full_messages.join(', ').to_s}"
+      render :edit
+    end
+  end
+
   private
 
   def expense_params

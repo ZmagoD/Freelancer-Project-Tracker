@@ -19,4 +19,8 @@ FactoryBot.define do
     email Faker::Internet.email
     phone Faker::PhoneNumber.cell_phone
   end
+
+  factory :expense do
+    amount Faker::Number.decimal(2)
+  end
 end

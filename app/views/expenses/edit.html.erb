@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="well">
+        <%= bootstrap_form_for([@project, @expense]) do |f| %>
+          <%= f.number_field :amount %>
+          <%= f.submit "Edit expense" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

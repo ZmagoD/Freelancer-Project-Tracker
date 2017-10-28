@@ -19,8 +19,8 @@ RSpec.describe ProjectsController, type: :controller do
     describe '#index' do
       let(:subject) { get :index }
 
-      it { is_expected.to have_http_status(:unautorized) }
-      it { is_expected.to_not render_template(:index) }
+      it { is_expected.to have_http_status(302) }
+      it { is_expected.to redirect_to(new_user_session_path) }
     end
   end
 end
