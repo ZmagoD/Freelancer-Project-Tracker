@@ -25,16 +25,24 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise-bootstrap-views', '~> 0.0.11'
+gem 'bootstrap_form'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'factory_bot_rails'
   gem 'selenium-webdriver'
+  gem 'capybara'
+  gem "chromedriver-helper"
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails-controller-testing'
+end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'

@@ -16,7 +16,7 @@
         <ul class="list-group">
           <% @expenses.each do |expense| %>
             <li class="list-group-item">
-              <%= expense.amount %> EUR added <%= expense.created_at.strftime("Due date %m/%d/%Y") %>
+              <%= expense.amount %> EUR added <%= expense.created_at.strftime("on %m/%d/%Y") %>
             </li>
           <% end %>
           <li class="list-group-item disabled">
