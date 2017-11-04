@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12 text-center jumbotron">
+      <%= link_to 'New Project', new_project_path, class: 'btn btn-lg btn-info' %>
+    </div>
+  </div>
+
+  <div class="row">
     <% @projects.each do |project| %>
       <div class="col-md-6 panel panel-info" style="padding-left: 0; padding-right: 0">
         <div class="panel-heading"><%= project.name %></div>

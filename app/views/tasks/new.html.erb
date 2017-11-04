@@ -1,18 +1,1 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="well">
-        <h1>New Task</h1>
-        <hr>
-        <%= bootstrap_form_for([@project, @task]) do |f| %>
-          <%= f.text_field :name %>
-          <%= f.text_area :description, class: "tinymce", rows: 20, cols: 12 %>
-          <%= f.text_field :due_date, class: 'datepicker' %>
-          <%= f.select :status, task_stauses, { class: "selectpicker" } %>
-          <%= f.submit "Add task to project #{@project.name}" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-<%= tinymce %>
+<%= render partial: 'tasks/task_form', task: @task, project: @project %>
