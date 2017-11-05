@@ -1,8 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user, inverse_of: :projects
   belongs_to :client, inverse_of: :projects
-  has_many :tasks, inverse_of: :project
-  has_many :expenses, inverse_of: :project
+  has_many :tasks, inverse_of: :project, dependent: :destroy
+  has_many :expenses, inverse_of: :project, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 254 }
   validates :description, length: { maximum: 512 }

@@ -1,2 +1,24 @@
-<h1>Clients#show</h1>
-<p>Find me in app/views/clients/show.html.erb</p>
+<div class="container">
+  <div class="row text-center">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to clients", user_clients_path(current_user), class: "btn btn-default" %>
+      <%= link_to "Edit client", edit_user_client_path(current_user, @client), class: "btn btn-default" %>
+    </div>
+  </div>
+  <div class="jumbotron">
+    <div class="page-header">
+      <i>Client:</i>
+      <h1><%= @client.full_name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well">
+        <h3 class="text-center">Statistics</h3>
+        <hr />
+
+        <div id="client-statistics"></div>
+      </div>
+    </div>
+  </div>
+</div>

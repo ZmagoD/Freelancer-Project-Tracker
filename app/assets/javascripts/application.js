@@ -16,8 +16,14 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require tinymce-jquery
+//= require d3
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
-  $('.datepicker').datepicker()
-});
+(function () {
+  document.addEventListener("turbolinks:load", function() {
+    $('.datepicker').datepicker();
+
+    d3.select('#client-statistics');
+  });
+})();
+
