@@ -1,24 +1,18 @@
-# README
+# Freelancer Project Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ is a open source simple project management tool to track cost and progress of your projects.
 
-Things you may want to cover:
+To run this project locally you need to install:
 
-* Ruby version
+* Ruby 2.4.0
 
-* System dependencies
+* Postgres (PostgreSQL) 9.6.2
 
-* Configuration
+Run `bundle install`, create the database with `bin/rake db:create`
+run the migrations `bin/rake db:create` and start the server `bin/rails server`
 
-* Database creation
+Open http://localhost:3000/ in your browser and there you have the app running.
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### LICENCE
+It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
