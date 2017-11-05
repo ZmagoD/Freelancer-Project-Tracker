@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to projects", projects_path, class: "btn btn-default" %>
+      <%= link_to "Add new client", new_user_client_path(current_user), class: "btn btn-default" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+        <% if @project.new_record? %>
+          <h1>New Project</h1>
+        <% else %>
+          <h1>Edit Project</h1>
+        <% end %>
+        <hr>
+        <%= bootstrap_form_for(@project) do |f| %>
+          <%= f.select :client, user_clients, { class: "selectpicker" } %>
+          <%= f.text_field :name %>
+          <%= f.text_area :description, class: "tinymce", rows: 10, cols: 12 %>
+          <%= f.text_field :due_date, class: 'datepicker' %>
+          <%= f.select :status, project_stauses, { class: "selectpicker" } %>
+          <%= f.number_field :estimated_amount %>
+          <%= f.submit (@project.new_record? ? "Add new project" : "Update project")%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= tinymce %>

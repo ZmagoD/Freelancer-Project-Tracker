@@ -1,4 +1,11 @@
 <div class="container">
+  <div class="row text-center">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to project", project_path(@project), class: "btn btn-default" %>
+      <%= link_to "Edit task", edit_project_task_path(@project, @task), class: "btn btn-default" %>
+    </div>
+  </div>
+
   <div class="jumbotron">
     <div class="page-header">
       <i>TASK:</i>
@@ -23,9 +30,5 @@
       <%= @task.description.html_safe %>
       <hr />
     </div>
-  </div>
-  <div class="btn-group" role="group">
-    <%= link_to "Back to project", project_path(@project), class: "btn btn-default" %>
-    <%= link_to "Edit task", edit_project_task_path(@project, @task), class: "btn btn-default" %>
   </div>
 </div>

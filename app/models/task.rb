@@ -7,5 +7,5 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :project, presence: true
 
-  enum status: %i(in_process on_hold done archived)
+  enum status: %i(in_progress on_hold done archived)
 end

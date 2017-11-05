@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to projects", projects_path, class: "btn btn-default" %>
+      <%= link_to "Add new client", new_user_client_path(current_user), class: "btn btn-default" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+        <% if @client.new_record? %>
+          <h1>New Client</h1>
+        <% else %>
+          <h1>Edit Client</h1>
+        <% end %>
+        <hr>
+        <%= bootstrap_form_for([current_user, @client]) do |f| %>
+          <%= f.text_field :full_name, label_class: "required" %>
+          <%= f.email_field :email %>
+          <%= f.phone_field :phone %>
+          <%= f.submit (@client.new_record? ? "Add new client" : "Update client")%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= tinymce %>

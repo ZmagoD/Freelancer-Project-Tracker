@@ -11,18 +11,18 @@ RSpec.describe ExpensesController, type: :controller do
       @expense = create :expense, project: @project
     end
 
-    describe '#new' do
+    describe 'GET #new' do
       let(:subject) { get :new, params: { project_id: @project.id } }
       it { is_expected.to have_http_status(:ok) }
       it { is_expected.to render_template(:new) }
     end
 
-    describe '#update' do
-      let(:subject) { get :update, params: { project_id: @project.id, id: @expense.id, expense: { amount: 500 } } }
+    describe 'PATCH #update' do
+      let(:subject) { patch :update, params: { project_id: @project.id, id: @expense.id, expense: { amount: 500 } } }
       it { is_expected.to redirect_to(project_path(@project)) }
     end
 
-    describe '#edit' do
+    describe 'GET #edit' do
       let(:subject) { get :edit, params: { project_id: @project.id, id: @expense.id } }
       it { is_expected.to have_http_status(:ok) }
       it { is_expected.to render_template(:edit) }

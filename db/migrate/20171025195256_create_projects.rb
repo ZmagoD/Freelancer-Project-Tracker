@@ -7,7 +7,6 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.datetime :due_date
       t.integer :status
       t.decimal :estimated_amount
-
       t.timestamps
     end
   end
