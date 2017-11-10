@@ -81,8 +81,8 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV["SMTP_USER_NAME"],
-    :password => ENV["SMTP_PASSWORD"],
+    :user_name => ENV["SENDGRID_PASSWORD"],
+    :password => ENV["SENDGRID_USERNAME"],
     :domain => ENV["HOST_NAME"],
     :address => 'smtp.sendgrid.net',
     :port => 587,
