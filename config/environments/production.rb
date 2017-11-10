@@ -79,7 +79,16 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  config.action_mailer.default_url_options = { host: ENV["HOST_NAME"] }
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV["SMTP_USER_NAME"],
+    :password => ENV["SMTP_PASSWORD"],
+    :domain => ENV["HOST_NAME"],
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
