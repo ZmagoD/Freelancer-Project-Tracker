@@ -20,10 +20,12 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise-bootstrap-views', '~> 0.0.11'
 gem 'bootstrap_form'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'will_paginate', '~> 3.1.0'
 gem 'tinymce-rails'
-gem "d3-rails"
+gem "chartkick"
+gem 'groupdate'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -47,6 +49,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet', '~> 5.6.1'
   gem 'brakeman', :require => false
+  gem 'active_record_doctor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

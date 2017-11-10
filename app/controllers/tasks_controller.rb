@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :filter_project
-  before_action :set_task, only: [:show, :edit]
+  before_action :set_task, only: [:show, :edit, :update]
 
   def show
   end
@@ -31,7 +31,14 @@ class TasksController < ApplicationController
   end
 
   def update
-
+    @task.update_attributes(task_params)
+    if @task.save
+      flash[:success] = "Successfully updated task #{@task.reload.name}"
+      redirect_to project_path(@project)
+    else
+      flash[:error] = "Something went wrong: #{@client.errors.full_messages.join(', ').to_s}"
+      render :edit
+    end
   end
 
   private

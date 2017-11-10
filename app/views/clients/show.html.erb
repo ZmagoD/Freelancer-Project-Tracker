@@ -9,6 +9,8 @@
     <div class="page-header">
       <i>Client:</i>
       <h1><%= @client.full_name %></h1>
+      <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <%= mail_to @client.email %></p>
+      <p><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <%= tel_to @client.phone %></p>
     </div>
   </div>
   <div class="row">
@@ -16,8 +18,11 @@
       <div class="well">
         <h3 class="text-center">Statistics</h3>
         <hr />
+        <h4>Earnings</h4>
+        <%= line_chart @earnings %>
 
-        <div id="client-statistics"></div>
+        <h4>Expenses</h4>
+        <%= line_chart @expenses %>
       </div>
     </div>
   </div>

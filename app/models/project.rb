@@ -10,5 +10,5 @@ class Project < ApplicationRecord
   validates :status, presence: true
   validates :client, presence: true
 
-  enum status: %i(in_process on_hold done archived)
+  enum status: %i(ready_to_start in_process on_hold done archived)
 end

@@ -12,18 +12,20 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require jquery-ui/widgets/datepicker
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require tinymce-jquery
-//= require d3
+//= require Chart.bundle
+//= require chartkick
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 (function () {
-  document.addEventListener("turbolinks:load", function() {
-    $('.datepicker').datepicker();
+  'use strict';
 
-    d3.select('#client-statistics');
+  document.addEventListener('turbolinks:load', function() {
+    $('.datepicker').datetimepicker();
   });
 })();
 

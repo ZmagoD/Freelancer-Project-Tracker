@@ -10,7 +10,7 @@
       <div class="col-md-6 panel panel-info" style="padding-left: 0; padding-right: 0">
         <div class="panel-heading"><%= project.name %></div>
         <div class="panel-body">
-          <%= project.description %>
+          <%= project.description.html_safe %>
 
           <%= link_to 'Project details', project_path(project), class: 'btn btn-lg btn-info pull-right' %>
         </div>

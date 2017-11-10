@@ -26,6 +26,8 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @earnings = Project.group_by_month(:created_at).where(client: @client).sum(:earned)
+    @expenses = Expense.group_by_month(:created_at).where('project_id IN (?)', @client.projects.pluck(:id)).sum(:amount)
   end
 
   def destroy
