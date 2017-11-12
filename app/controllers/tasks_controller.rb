@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task = Task.new do |task|
       task.name = task_params[:name]
       task.description = task_params[:description]
-      task.due_date = DateTime.strptime(task_params[:due_date], "%m/%d/%Y")
+      task.due_date = DateTime.strptime(task_params[:due_date], '%m/%d/%Y %I:%M %p')
       task.status = task_params[:status].parameterize.underscore
       task.project = @project
     end

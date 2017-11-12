@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     @project = Project.new do |project|
       project.name = project_params[:name]
       project.description = project_params[:description]
-      project.due_date = DateTime.strptime(project_params[:due_date], "%m/%d/%Y")
+      project.due_date = DateTime.strptime(project_params[:due_date], '%m/%d/%Y %I:%M %p')
       project.estimated_amount = project_params[:estimated_amount]
       project.status = project_params[:status].parameterize.underscore
       project.client = Client.find_by_id(project_params[:client])

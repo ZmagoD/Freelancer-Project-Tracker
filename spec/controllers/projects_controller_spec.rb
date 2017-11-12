@@ -6,6 +6,7 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe 'signed user' do
     before do
+      user.confirm
       sign_in user
     end
 
@@ -30,7 +31,7 @@ RSpec.describe ProjectsController, type: :controller do
                project: {
                 name: 'test project',
                 description: 'lorem...',
-                due_date: 10.days.from_now,
+                due_date: '12/01/2017 9:05 PM',
                 status: 'On hold',
                 client: client.id
                }

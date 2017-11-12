@@ -6,6 +6,7 @@ RSpec.describe TasksController, type: :controller do
 
   describe 'loged user' do
     before do
+      user.confirm
       sign_in user
       client = create :client, user: user
       non_user_client = create :client, user: user_two
@@ -36,7 +37,7 @@ RSpec.describe TasksController, type: :controller do
       let(:subject) do
         post :create,
              params: {
-               task: { name: 'Test task', description: 'Lorem...',due_date: '10/4/2018', status: 'In progress' },
+               task: { name: 'Test task', description: 'Lorem...',due_date: '12/01/2017 9:05 PM', status: 'In progress' },
                project_id: @project.id
              }
       end

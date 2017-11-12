@@ -5,6 +5,7 @@ RSpec.describe ExpensesController, type: :controller do
 
   describe 'loged user' do
     before do
+      user.confirm
       sign_in user
       client = create :client, user: user
       @project = create :project, user: user, client: client
