@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :filter_project
-  before_action :set_task, only: [:show, :edit, :update]
+  before_action :set_task, only: %i[show edit update destroy]
 
   def show
   end
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
       flash[:success] = "Successfully added new task to #{@project.name}"
       redirect_to project_path(@project)
     else
-      flash[:error] = "Something went wrong: #{@task.errors.full_messages.join(', ').to_s}"
+      flash[:error] = "Something went wrong: #{display_errors(@task.errors)}"
       render :new
     end
   end
@@ -31,14 +31,24 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update_attributes(task_params)
+    @task.update_attributes(name: task_params[:name]) do |task|
+      task.description = task_params[:description]
+      task.due_date = DateTime.strptime(task_params[:due_date], '%m/%d/%Y %I:%M %p')
+      task.status = task_params[:status].parameterize.underscore
+    end
     if @task.save
       flash[:success] = "Successfully updated task #{@task.reload.name}"
       redirect_to project_path(@project)
     else
-      flash[:error] = "Something went wrong: #{@client.errors.full_messages.join(', ').to_s}"
+      flash[:error] = "Something went wrong: #{display_errors(@client)}"
       render :edit
     end
+  end
+
+  def destroy
+    @task.destroy
+    flash[:success] = 'Task successfully removed'
+    redirect_to project_path(@project)
   end
 
   private

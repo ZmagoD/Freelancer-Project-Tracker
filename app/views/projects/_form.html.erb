@@ -16,10 +16,12 @@
         <% end %>
         <hr>
         <%= bootstrap_form_for(@project) do |f| %>
-          <%= f.select :client, user_clients, { class: "selectpicker" }, label_class: "required" %>
+          <% if @project.new_record? %>
+            <%= f.select :client, user_clients, { class: "selectpicker" }, label_class: "required" %>
+          <% end %>
           <%= f.text_field :name, label_class: "required" %>
           <%= f.text_area :description, class: "tinymce", rows: 10, cols: 12 %>
-          <%= f.text_field :due_date, class: 'datepicker', label_class: "required" %>
+          <%= f.text_field :due_date, class: 'datepicker', label_class: "required", placeholder: @project.due_date %>
           <%= f.select :status, project_stauses, { class: "selectpicker" }, label_class: "required" %>
           <%= f.number_field :estimated_amount %>
           <%= f.submit (@project.new_record? ? "Add new project" : "Update project")%>

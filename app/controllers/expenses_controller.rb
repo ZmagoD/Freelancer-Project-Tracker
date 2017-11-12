@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :filter_project
-  before_action :filter_expense, only: :destroy
+  before_action :set_expense, only: %i[destroy edit update]
 
   def new
     @expense = Expense.new
@@ -14,22 +14,20 @@ class ExpensesController < ApplicationController
       flash[:success] = "Successfully added new expense to #{@project.name}"
       redirect_to project_path(@project)
     else
-      flash[:error] = "Something went wrong: #{@expense.errors.full_messages.join(', ').to_s}"
+      flash[:error] = "Something went wrong: #{display_errors(@expense)}"
       render :new
     end
   end
 
   def edit
-    @expense = Expense.find_by_id(params[:id])
   end
 
   def update
-    expense = Expense.find_by_id(params[:id])
-    if expense.update_attributes(expense_params)
+    if @expense.update_attributes(expense_params)
       flash[:success] = 'Expense successfully updated'
       redirect_to project_path(@project)
     else
-      flash[:error] = "Something went wrong: #{expense.errors.full_messages.join(', ').to_s}"
+      flash[:error] = "Something went wrong: #{display_errors(@expense)}"
       render :edit
     end
   end
@@ -46,7 +44,7 @@ class ExpensesController < ApplicationController
     params.require(:expense).permit(:amount)
   end
 
-  def filter_expense
+  def set_expense
     @expense = Expense.find_by_id(params[:id])
     raise ActionController::RoutingError.new('Not Found') unless @project == @expense.project
   end

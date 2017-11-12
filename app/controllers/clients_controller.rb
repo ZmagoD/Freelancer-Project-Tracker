@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client, only: [:edit, :show, :destroy, :update]
+  before_action :set_client, only: %i[edit show destroy update]
 
   def index
     @clients = current_user.clients.paginate(page: params[:page], per_page: 30)
@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
       flash[:success] = 'Successfully added new client'
       redirect_to user_clients_path(current_user)
     else
-      flash[:error] = "Something went wrong: #{@client.errors.full_messages.join(', ').to_s}"
+      flash[:error] = "Something went wrong: #{display_errors(@client)}"
       render :new
     end
   end
@@ -42,7 +42,7 @@ class ClientsController < ApplicationController
       flash[:success] = "Successfully updated client #{@client.full_name}"
       redirect_to user_clients_path(current_user)
     else
-      flash[:error] = "Something went wrong: #{@client.errors.full_messages.join(', ').to_s}"
+      flash[:error] = "Something went wrong: #{display_errors(@client)}"
       render :edit
     end
   end
