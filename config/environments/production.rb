@@ -81,9 +81,12 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   config.action_mailer.default_url_options = { host:  ENV["MAIL_SERVER_URL"] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
   ActionMailer::Base.smtp_settings = {
-    user_name: ENV["SENDGRID_PASSWORD"],
-    password: ENV["SENDGRID_USERNAME"],
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"],
     domain: ENV["HOST_NAME"],
     address: 'smtp.sendgrid.net',
     port: '587',
