@@ -3,5 +3,7 @@ class ApplicationController < ActionController::Base
 
   def display_errors(klass)
     klass.errors.full_messages.join(', ').to_s
+  rescue
+    klass.full_messages.join(', ').to_s
   end
 end

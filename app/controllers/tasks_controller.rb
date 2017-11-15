@@ -11,13 +11,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new do |task|
-      task.name = task_params[:name]
-      task.description = task_params[:description]
-      task.due_date = DateTime.strptime(task_params[:due_date], '%m/%d/%Y %I:%M %p')
-      task.status = task_params[:status].parameterize.underscore
-      task.project = @project
-    end
+    @task = Task.new(task_params)
+    @task.project = @project
     if @task.save
       flash[:success] = "Successfully added new task to #{@project.name}"
       redirect_to project_path(@project)
@@ -31,11 +26,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update_attributes(name: task_params[:name]) do |task|
-      task.description = task_params[:description]
-      task.due_date = DateTime.strptime(task_params[:due_date], '%m/%d/%Y %I:%M %p')
-      task.status = task_params[:status].parameterize.underscore
-    end
+    @task.update_attributes(task_params)
     if @task.save
       flash[:success] = "Successfully updated task #{@task.reload.name}"
       redirect_to project_path(@project)
@@ -59,7 +50,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :description, :due_date, :status)
+    params.require(:task).permit(:name, :description, :set_due_date, :set_status)
   end
 
   def filter_project

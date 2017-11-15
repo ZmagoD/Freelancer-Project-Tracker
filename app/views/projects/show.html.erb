@@ -13,6 +13,17 @@
       <p>Estimated earnings: <%= @project.estimated_amount %> EUR</p>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well">
+        <h3 class="text-center">Description</h3>
+        <hr />
+        <%= @project.description.html_safe %>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-6">
       <div class="well">

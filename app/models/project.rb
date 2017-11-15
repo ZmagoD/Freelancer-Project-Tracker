@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  include SharedAttributes
   belongs_to :user, inverse_of: :projects
   belongs_to :client, inverse_of: :projects
   has_many :tasks, inverse_of: :project, dependent: :destroy

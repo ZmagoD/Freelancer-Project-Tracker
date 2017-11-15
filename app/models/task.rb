@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  include SharedAttributes
   belongs_to :project, inverse_of: :tasks
 
   validates :name, presence: true, length: { maximum: 254 }

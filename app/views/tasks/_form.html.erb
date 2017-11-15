@@ -17,8 +17,8 @@
         <%= bootstrap_form_for([@project, @task]) do |f| %>
           <%= f.text_field :name, label_class: "required" %>
           <%= f.text_area :description, class: "tinymce", rows: 20, cols: 12 %>
-          <%= f.text_field :due_date, class: 'datepicker', label_class: "required" %>
-          <%= f.select :status, task_stauses, { class: "selectpicker" }, label_class: "required" %>
+          <%= f.text_field :set_due_date, class: 'datepicker', label_class: "required", value: @task.set_due_date, id: "due_date_picker"  %>
+          <%= f.select :set_status, task_stauses, { class: "selectpicker" }, label_class: "required" %>
           <%= f.submit (@task.new_record? ? "Add task to project #{@project.name}" : "Update task")%>
         <% end %>
       </div>

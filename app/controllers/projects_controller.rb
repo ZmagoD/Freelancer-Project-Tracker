@@ -13,15 +13,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new do |project|
-      project.name = project_params[:name]
-      project.description = project_params[:description]
-      project.due_date = DateTime.strptime(project_params[:due_date], '%m/%d/%Y %I:%M %p')
-      project.estimated_amount = project_params[:estimated_amount]
-      project.status = project_params[:status].parameterize.underscore
-      project.client = Client.find_by_id(project_params[:client])
-      project.user = current_user
-    end
+    @project = Project.new(project_params)
+    @project.user = current_user
     if @project.save
       flash[:success] = "Successfully added new project: #{@project.name}"
       redirect_to project_path(@project)
@@ -40,12 +33,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project.update_attributes(name: project_params[:name]) do |project|
-      project.description = project_params[:description]
-      project.due_date = DateTime.strptime(project_params[:due_date], '%m/%d/%Y %I:%M %p')
-      project.estimated_amount = project_params[:estimated_amount]
-      project.status = project_params[:status].parameterize.underscore
-    end
+    @project.update_attributes(project_params)
     if @project.save
       flash[:success] = "Successfully updated project #{@project.name}"
       redirect_to project_path(@project)
@@ -68,11 +56,12 @@ class ProjectsController < ApplicationController
   end
 
   def filter_client
-    return unless project_params[:client]
-    raise ActionController::RoutingError.new('Not Found') unless project_params[:client].to_i.in? current_user.clients.pluck(:id)
+    return unless project_params[:client_id]
+    raise ActionController::RoutingError.new('Not Found') unless project_params[:client_id].to_i.in? current_user.clients.pluck(:id)
+    params[:client_id] = params[:client_id].to_i
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :due_date, :estimated_amount, :status, :client)
+    params.require(:project).permit(:name, :description, :set_due_date, :estimated_amount, :set_status, :client_id)
   end
 end

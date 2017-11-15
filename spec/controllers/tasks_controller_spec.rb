@@ -37,7 +37,7 @@ RSpec.describe TasksController, type: :controller do
       let(:subject) do
         post :create,
              params: {
-               task: { name: 'Test task', description: 'Lorem...',due_date: '12/01/2017 9:05 PM', status: 'In progress' },
+               task: { name: 'Test task', description: 'Lorem...',set_due_date: '12/01/2017 9:05 PM', set_status: 'In progress' },
                project_id: @project.id
              }
       end

@@ -31,9 +31,9 @@ RSpec.describe ProjectsController, type: :controller do
                project: {
                 name: 'test project',
                 description: 'lorem...',
-                due_date: '12/01/2017 9:05 PM',
-                status: 'On hold',
-                client: client.id
+                set_due_date: '12/01/2017 9:05 PM',
+                set_status: 'On hold',
+                client_id: client.id
                }
              }
       end
