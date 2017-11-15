@@ -23,7 +23,8 @@
           <%= f.text_area :description, class: "tinymce", rows: 10, cols: 12 %>
           <%= f.text_field :set_due_date, class: 'datepicker', label_class: "required", value: @project.set_due_date %>
           <%= f.select :set_status, project_stauses, { class: "selectpicker" }, label_class: "required" %>
-          <%= f.number_field :estimated_amount %>
+          <%= f.number_field :estimated_amount, prepend: "#{current_user.currency}" %>
+          <%= f.number_field :earned, prepend: "#{current_user.currency}"  %>
           <%= f.submit (@project.new_record? ? "Add new project" : "Update project")%>
         <% end %>
       </div>

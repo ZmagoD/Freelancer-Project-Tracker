@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to project", project_path(@project), class: "btn btn-default" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="well">
+        <%= bootstrap_form_for([@project, @expense]) do |f| %>
+          <%= f.number_field :amount, prepend: "#{current_user.currency}"  %>
+          <%= f.submit (@expense.new_record? ? "Add expense to project #{@project.name}" : "Edit expense") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

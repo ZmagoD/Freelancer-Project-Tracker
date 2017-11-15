@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="btn-group" role="group">
+      <%= link_to "Back to project", root_path, class: "btn btn-default" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+        <h1>Settings</h1>
+        <hr>
+        <%= bootstrap_form_for(@user) do |f| %>
+          <%= f.text_field :full_name, label_class: "required" %>
+          <%= f.text_field :currency, label_class: "required", label: "Default currency" %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
