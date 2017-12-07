@@ -2,10 +2,29 @@
   <div class="row">
     <div class="col-md-12 text-center jumbotron">
       <%= link_to 'New Project', new_project_path, class: 'btn btn-lg btn-info' %>
+      <% if @archive %>
+        <%= link_to(projects_path) do %>
+          <button class='btn btn-lg btn-info'>
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Projects
+          </button>
+        <% end %>
+      <% else %>
+        <%= link_to(projects_path(archived: true)) do %>
+          <button class='btn btn-lg btn-info'>
+            <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Archive
+          </button>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
 
   <div class="row">
+    <% if @archive %>
+      <h1 class="text-center">Archived Projects</h1>
+    <% else %>
+      <h1 class="text-center">Active Projects</h1>
+    <% end %>
     <% @projects.each do |project| %>
       <div class="col-md-6 panel panel-info" style="padding-left: 0; padding-right: 0">
         <div class="panel-heading"><%= project.name %></div>

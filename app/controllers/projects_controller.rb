@@ -4,7 +4,12 @@ class ProjectsController < ApplicationController
   before_action :setProject, only: %i[edit destroy show update]
 
   def index
-    @projects = current_user.projects.paginate(page: params[:page], per_page: 30).preload(:client)
+    fitered_projects = current_user.projects.where.not(status: :archived)
+    if params[:archived]
+      fitered_projects = current_user.projects.where(status: :archived)
+      @archive = true
+    end
+    @projects = fitered_projects.paginate(page: params[:page], per_page: 30).preload(:client)
   end
 
   def new

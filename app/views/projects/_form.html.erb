@@ -22,7 +22,11 @@
           <%= f.text_field :name, label_class: "required" %>
           <%= f.text_area :description, class: "tinymce", rows: 10, cols: 12 %>
           <%= f.text_field :set_due_date, class: 'datepicker', label_class: "required", value: @project.set_due_date %>
-          <%= f.select :set_status, project_stauses, { class: "selectpicker" }, label_class: "required" %>
+          <% if @project.new_record? %>
+            <%= f.select :set_status, project_stauses, { class: "selectpicker" }, label_class: "required" %>
+          <% else %>
+            <%= f.select :set_status, project_stauses, { class: "selectpicker", selected: @project.status.humanize }, label_class: "required" %>
+          <% end %>
           <%= f.number_field :estimated_amount, prepend: "#{current_user.currency}" %>
           <%= f.number_field :earned, prepend: "#{current_user.currency}"  %>
           <%= f.submit (@project.new_record? ? "Add new project" : "Update project")%>
