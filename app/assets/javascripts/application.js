@@ -26,6 +26,13 @@
 
   document.addEventListener('turbolinks:load', function() {
     $('.datepicker').datetimepicker();
+
+    $('.task-list-selectpicker').each(function(el) {
+      var form = $('.task-list-selectpicker').get(el);
+      $(form).find("select").change(function() {
+        $(form).submit();
+      });
+    });
   });
 })();
 
