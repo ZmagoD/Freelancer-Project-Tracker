@@ -27,8 +27,8 @@
           <% else %>
             <%= f.select :set_status, project_stauses, { class: "selectpicker", selected: @project.status.humanize }, label_class: "required" %>
           <% end %>
-          <%= f.number_field :estimated_amount, prepend: "#{current_user.currency}" %>
-          <%= f.number_field :earned, prepend: "#{current_user.currency}"  %>
+          <%= f.number_field :estimated_amount, prepend: "#{current_user.currency}", step: :any %>
+          <%= f.number_field :earned, prepend: "#{current_user.currency}", step: :any  %>
           <%= f.submit (@project.new_record? ? "Add new project" : "Update project")%>
         <% end %>
       </div>

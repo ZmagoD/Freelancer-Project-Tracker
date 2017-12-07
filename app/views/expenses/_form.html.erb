@@ -9,7 +9,7 @@
     <div class="col-xs-4 col-xs-offset-4">
       <div class="well">
         <%= bootstrap_form_for([@project, @expense]) do |f| %>
-          <%= f.number_field :amount, prepend: "#{current_user.currency}"  %>
+          <%= f.number_field :amount, prepend: "#{current_user.currency}", step: :any  %>
           <%= f.submit (@expense.new_record? ? "Add expense to project #{@project.name}" : "Edit expense") %>
         <% end %>
       </div>
