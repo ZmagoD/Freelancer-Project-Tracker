@@ -27,7 +27,16 @@
     <% end %>
     <% @projects.each do |project| %>
       <div class="col-md-6 panel panel-info" style="padding-left: 0; padding-right: 0">
-        <div class="panel-heading"><%= project.name %></div>
+        <div class="panel-heading">
+          <%= project.name %>
+
+          <%= link_to project_path(project),
+                      class: 'btn btn-xs btn-info pull-right',
+                      data: { confirm: "Are you sure you want to delete this project? It will delete all projects tasks" },
+                      method: :delete do %>
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          <% end %>
+        </div>
         <div class="panel-body">
           <%= project.description.html_safe %>
 

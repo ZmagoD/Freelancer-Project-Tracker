@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     flash[:success] = 'Project successfully removed'
-    redirect_to project_path
+    redirect_to projects_path
   end
 
   private
