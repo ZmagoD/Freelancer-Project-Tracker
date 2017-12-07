@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   has_many :expenses, inverse_of: :project, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 254 }
-  validates :description, length: { maximum: 512 }
+  validates :description, length: { maximum: 10000 }
   validates :due_date, presence: true
   validates :status, presence: true
   validates :client, presence: true
