@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ZmagoD/Freelancer-Project-Tracker.svg?branch=master)]
+![Build Status](https://travis-ci.org/ZmagoD/Freelancer-Project-Tracker.svg?branch=master)
 # Freelancer Project Tracker
 
  is a open source simple project management tool to track cost and progress of your projects.
