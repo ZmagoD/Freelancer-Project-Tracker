@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { HELLO_WORLD_NAME_UPDATE } from '../constants/helloWorldConstants';
+import { HELLO_WORLD_NAME_UPDATE } from '../constants/weekPlannerConstants';
 
 const name = (state = '', action) => {
   switch (action.type) {
@@ -10,6 +10,6 @@ const name = (state = '', action) => {
   }
 };
 
-const helloWorldReducer = combineReducers({ name });
+const weekPlannerReducer = combineReducers({ name });
 
-export default helloWorldReducer;
+export default weekPlannerReducer;

@@ -13,6 +13,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+          <li><%= link_to 'Week Planner', week_planner_path %></li>
           <li><%= link_to 'Projects', projects_path %></li>
           <li><%= link_to 'Clients', user_clients_path(current_user) %></li>
           <li class="dropdown">
