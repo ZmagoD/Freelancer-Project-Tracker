@@ -1,6 +1,7 @@
 {
   "name": "project_tracker",
   "private": true,
+  "scripts": { "postinstall": "cd client && npm install" },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
