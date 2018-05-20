@@ -2,10 +2,10 @@
   "name": "project_tracker",
   "private": true,
   "scripts": { "postinstall": "cd client && npm install" },
-  "engines": {
-    "node": ">=9.5.0",
-    "yarn": ">=1.3.2"
-  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
