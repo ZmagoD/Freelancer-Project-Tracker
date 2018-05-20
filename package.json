@@ -3,8 +3,7 @@
   "private": true,
   "scripts": { "postinstall": "cd client && npm install" },
   "cacheDirectories": [
-    "node_modules",
-    "client/node_modules"
+    "node_modules"
   ],
   "dependencies": {
     "@rails/webpacker": "3.5",
