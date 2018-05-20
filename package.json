@@ -1,7 +1,6 @@
 {
   "name": "project_tracker",
   "private": true,
-  "scripts": { "postinstall": "cd client && npm install" },
   "cacheDirectories": [
     "node_modules"
   ],
